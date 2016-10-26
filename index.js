@@ -126,6 +126,11 @@ tg.on('message', function(msg) {
       text: 'Spela trivia nu: https://telegram.me/joinchat/AXjh-gBgic0Dnbj_-uzMxg',
       chat_id: msg.chat.id
     });
+  } else if (!msg.text.indexOf('/bompa')) {
+    tg.sendAudio({
+      audio: 'BQADBAADNgAD-uF4AZWtSWQU4TIFAg',
+      chat_id: msg.chat.id
+    });
   }
 });
 
