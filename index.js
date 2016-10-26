@@ -68,11 +68,6 @@ tg.on('message', function(msg) {
       text: new Date().getDay() === 3 ? 'Ja, det är onsdag.' : 'Nope.',
       chat_id: msg.chat.id
     });
-  } else if (!msg.text.indexOf('/bobross')) {
-    tg.sendMessage({
-      text: new Date().getDay() === 1 ? 'Bob Ross day!' : 'Nope.',
-      chat_id: msg.chat.id
-    });
   } else if (!msg.text.indexOf('/music')) {
     try {
       fs.readFile(process.env.HOME + '/.dagsen-bot-music.json', function(err, songs) {
@@ -129,6 +124,19 @@ tg.on('message', function(msg) {
   } else if (!msg.text.indexOf('/bompa')) {
     tg.sendAudio({
       audio: 'BQADBAADNgAD-uF4AZWtSWQU4TIFAg',
+      chat_id: msg.chat.id
+    });
+  } else if (!msg.text.indexOf('/wappen')) {
+    var today = new Date();
+    var wappen = new Date(today.getMonth()>=4 ? today.getFullYear()+1 : today.getFullYear(),4,30); // Months start from 0.
+    var daysLeft = Math.round((wappen-today)/(1000*60*60*24));
+    tg.sendMessage({
+      text: 'Det är ' + daysLeft + ' dagar kvar till wappen (om den ordnas)!',
+      chat_id: msg.chat.id
+    });
+  } else if (!msg.text.indexOf('/ylonz')) {
+    tg.sendMessage({
+      text: 'Snart är det YLONZ!',
       chat_id: msg.chat.id
     });
   }
